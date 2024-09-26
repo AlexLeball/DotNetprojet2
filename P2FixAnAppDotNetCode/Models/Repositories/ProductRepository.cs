@@ -29,13 +29,12 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
             _products.Add(new Product(++id, 50, 895.00, "NOKIA OEM BL-5J", "Cell Phone "));
         }
 
-        /// <summary>
-        /// Get all products from the inventory
-        /// </summary>
-        public Product[] GetAllProducts()
+        /// Get all products from the inventory <summary>
+        /// change the return type from array to list
+        public List<Product> GetAllProducts()
         {
             List<Product> list = _products.Where(p => p.Stock > 0).OrderBy(p => p.Name).ToList();
-            return list.ToArray();
+            return list;
         }
 
         /// <summary>

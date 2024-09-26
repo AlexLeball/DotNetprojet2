@@ -1,82 +1,79 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace P2FixAnAppDotNetCode.Models
 {
-    /// <summary>
-    /// The Cart class
-    /// </summary>
     public class Cart : ICart
     {
-        /// <summary>
-        /// Read-only property for display only
-        /// </summary>
-        public IEnumerable<CartLine> Lines => GetCartLineList();
+        // List to hold the cart lines
+        private List<CartLine> cartLines = new List<CartLine>();
+        public IEnumerable<CartLine> Lines => cartLines; // Directly use cartLines
 
-        /// <summary>
-        /// Return the actual cartline list
-        /// </summary>
-        /// <returns></returns>
-        private List<CartLine> GetCartLineList()
-        {
-            return new List<CartLine>();
-        }
-
-        /// <summary>
-        /// Adds a product in the cart or increment its quantity in the cart if already added
-        /// </summary>//
+        /// Adds a product to the cart or increments its quantity if already added.
+       
         public void AddItem(Product product, int quantity)
         {
-            // TODO implement the method
+            // Validate product and quantity
+            if (product == null || quantity < 1)
+            {
+                //if nothing throw an exception
+                throw new ArgumentException("Sorry, your product is not available or quantity is less than 1");
+            }
+            // Find the current cart line
+            var currentCartLine = FindCartLine(product.Id);
+            if (currentCartLine != null)
+            {
+                // Increment the quantity if the product is already in the cart
+                currentCartLine.Quantity += quantity;
+            }
+            else
+            {
+                // Add the new cart line if the product is not in the cart
+                cartLines.Add(new CartLine { Product = product, Quantity = quantity });
+            }
         }
 
-        /// <summary>
-        /// Removes a product form the cart
-        /// </summary>
-        public void RemoveLine(Product product) =>
-            GetCartLineList().RemoveAll(l => l.Product.Id == product.Id);
-
-        /// <summary>
-        /// Get total value of a cart
-        /// </summary>
-        public double GetTotalValue()
-        {
-            // TODO implement the method
-            return 0.0;
-        }
-
-        /// <summary>
-        /// Get average value of a cart
-        /// </summary>
-        public double GetAverageValue()
-        {
-            // TODO implement the method
-            return 0.0;
-        }
-
-        /// <summary>
-        /// Looks after a given product in the cart and returns if it finds it
-        /// </summary>
+        /// Finds a product in the cart and returns it.    
         public Product FindProductInCartLines(int productId)
         {
-            // TODO implement the method
-            return null;
+            var cartLine = FindCartLine(productId);
+            return cartLine?.Product; // Return null if cartLine is not found
         }
 
-        /// <summary>
-        /// Get a specific cartline by its index
-        /// </summary>
+        // Access CartLine where the product is stored
+        private CartLine FindCartLine(int productId)
+        {
+            return cartLines.FirstOrDefault(cartLine => cartLine.Product.Id == productId);
+        }
+
+        /// Removes a product from the cart.
+       
+        public void RemoveLine(Product product) =>
+            cartLines.RemoveAll(l => l.Product.Id == product.Id); // Directly use cartLines
+        
+        /// Gets the total value of the cart.
+        public double GetTotalValue()
+        {
+            return cartLines.Sum(cartLine => cartLine.Product.Price * cartLine.Quantity);
+        }
+
+        /// Gets the average value of the cart.
+        public double GetAverageValue()
+        {
+            if (cartLines.Count == 0) return 0; // Handle empty cart case
+            return GetTotalValue() / cartLines.Count;
+        }
+
+        /// Gets a specific cart line by its index.
         public CartLine GetCartLineByIndex(int index)
         {
-            return Lines.ToArray()[index];
+            return Lines.ElementAt(index);
         }
 
-        /// <summary>
-        /// Clears a the cart of all added products
-        /// </summary>
+        /// Clears the cart of all added products.
         public void Clear()
         {
-            List<CartLine> cartLines = GetCartLineList();
             cartLines.Clear();
         }
     }
