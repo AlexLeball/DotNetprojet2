@@ -10,9 +10,9 @@ namespace P2FixAnAppDotNetCode.Controllers
         private readonly ICart _cart;
         private readonly IProductService _productService;
 
-        public CartController(ICart pCart, IProductService productService)
+        public CartController(ICart iCart, IProductService productService)
         {
-            _cart = pCart;
+            _cart = iCart;
             _productService = productService;
         }
 
