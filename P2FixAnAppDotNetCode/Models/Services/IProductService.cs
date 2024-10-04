@@ -7,5 +7,6 @@ namespace P2FixAnAppDotNetCode.Models.Services
        List<Product> GetAllProducts();
         Product GetProductById(int id);
         void UpdateProductQuantities(Cart cart);
+        void UpdateProductStocks(int productId, int quantityToRemove);
     }
 }

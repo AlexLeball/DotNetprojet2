@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using P2FixAnAppDotNetCode.Models.Repositories;
 using System.Linq;
+using System;
 
 namespace P2FixAnAppDotNetCode.Models.Services
 {
-    /// <summary>
     /// This class provides services to manages the products
-    /// </summary>
     public class ProductService : IProductService
     {
         private readonly IProductRepository _productRepository;
@@ -18,35 +17,54 @@ namespace P2FixAnAppDotNetCode.Models.Services
             _orderRepository = orderRepository;
         }
 
-        /// <summary>
         /// Get all product from the inventory
-        /// </summary>
         ///Change the return type from array to list
         public List<Product> GetAllProducts()
         {
-            // TODO change the return type from array to List<T> and propagate the change
-            // throughout the application
-            return _productRepository.GetAllProducts();
+            return _productRepository.GetAllProducts();                ;
         }
 
-        /// <summary>
-        /// Get a product form the inventory by its id
-        /// </summary>
-        public Product GetProductById(int id)
+        /// Get a product form the inventory by its id 
+       public Product GetProductById(int id)
         {
-            // TODO implement the method
-            // return the product from the inventory by its id
-            var product = _productRepository.GetAllProducts().FirstOrDefault(p => p.Id == id);
-            return product;
+            return GetAllProducts().FirstOrDefault(p => p.Id == id);
         }
 
-        /// <summary>
-        /// Update the quantities left for each product in the inventory depending of ordered the quantities
-        /// </summary>
+        public void UpdateProductStocks(int productId, int quantityToRemove)
+        {
+            // Get the product from the repository
+            var product = GetAllProducts().FirstOrDefault(p => p.Id == productId);
+
+            // Validate product and quantity
+            if (quantityToRemove < 1 || product == null)
+            {
+                throw new ArgumentException("Invalid product or quantity to remove.");
+            }
+
+            // Check if there is enough stock before reducing
+            if (product.Stock < quantityToRemove)
+            {
+                throw new InvalidOperationException("Not enough stock available.");
+            }
+
+            // Update the stock of the product
+            product.Stock -= quantityToRemove;
+        }
+
+
+        //debugging currently 
         public void UpdateProductQuantities(Cart cart)
+        // iterate through the cart and update the product quantities in the inventory
         {
-            // TODO implement the method
-            // update product inventory by using _productRepository.UpdateProductStocks() method.
+            foreach (var line in cart.Lines)
+            {
+                UpdateProductStocks(line.Product.Id, line.Quantity); 
+            }
+        }
+
+        public void UpdateProduct(Product product)
+        {
+            _productRepository.UpdateProduct(product); 
         }
     }
 }

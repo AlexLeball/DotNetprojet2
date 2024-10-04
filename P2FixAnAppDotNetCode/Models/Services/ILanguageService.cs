@@ -7,5 +7,6 @@ namespace P2FixAnAppDotNetCode.Models.Services
         void ChangeUiLanguage(HttpContext context, string language);
         string SetCulture(string language);
         void UpdateCultureCookie(HttpContext context, string culture);
+
     }
 }
