@@ -28,7 +28,18 @@ namespace P2FixAnAppDotNetCode.Controllers
 
             if (product != null)
             {
-                _cart.AddItem(product, 1);
+                // Check if the stock is available before adding to cart
+                if (product.Stock > 0)
+                {
+                    // Add item to the cart
+                    _cart.AddItem(product, 1);
+                }
+                else
+                {
+                    // Optionally, handle case where stock is not available
+                    ModelState.AddModelError("", "Sorry, this product is out of stock.");
+                }
+
                 return RedirectToAction("Index");
             }
             else

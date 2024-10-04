@@ -7,5 +7,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
     {
         List<Product> GetAllProducts();
         void UpdateProduct(Product product);
+        Product GetProductById(int id);
     }
 }
+
