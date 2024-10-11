@@ -117,35 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Checkout" xml:space="preserve">
-    <value>Passer la commande</value>
+  <data name="Adress" xml:space="preserve">
+    <value>dirección</value>
   </data>
-  <data name="ContinueShopping" xml:space="preserve">
-    <value>Continuer les achats</value>
+  <data name="City" xml:space="preserve">
+    <value>ciudad</value>
   </data>
-  <data name="Item" xml:space="preserve">
-    <value>Produit</value>
+  <data name="CompleteOrder" xml:space="preserve">
+    <value>completar pedido</value>
   </data>
-  <data name="Price" xml:space="preserve">
-    <value>Prix</value>
+  <data name="Country" xml:space="preserve">
+    <value>pais</value>
   </data>
-  <data name="Quantity" xml:space="preserve">
-    <value>Quantité</value>
+  <data name="EnterDetails" xml:space="preserve">
+    <value>Por favor ingrese sus datos y enviaremos sus productos de inmediato!</value>
   </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Supprimer</value>
+  <data name="Location" xml:space="preserve">
+    <value>ubicación</value>
   </data>
-  <data name="Subtotal" xml:space="preserve">
-    <value>Sous-total</value>
+  <data name="Name" xml:space="preserve">
+    <value>nombre</value>
   </data>
-  <data name="Total" xml:space="preserve">
-    <value>Total</value>
-    <comment>Total</comment>
+  <data name="OrderTitle" xml:space="preserve">
+    <value>por favor, complete la compra</value>
   </data>
-  <data name="YourCart" xml:space="preserve">
-    <value>Votre panier</value>
+  <data name="ShipSoon" xml:space="preserve">
+    <value>Enviaremos sus productos lo antes posible</value>
   </data>
-  <data name="Average" xml:space="preserve">
-    <value>Moyenne</value>
+  <data name="ShipTo" xml:space="preserve">
+    <value>enviar a</value>
+  </data>
+  <data name="Zip" xml:space="preserve">
+    <value>código postal</value>
   </data>
 </root>

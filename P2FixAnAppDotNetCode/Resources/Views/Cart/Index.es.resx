@@ -118,34 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Checkout" xml:space="preserve">
-    <value>Passer la commande</value>
+    <value>complete la compra</value>
   </data>
   <data name="ContinueShopping" xml:space="preserve">
-    <value>Continuer les achats</value>
+    <value>Continuar con las compras</value>
   </data>
   <data name="Item" xml:space="preserve">
-    <value>Produit</value>
+    <value>Producto</value>
   </data>
   <data name="Price" xml:space="preserve">
-    <value>Prix</value>
+    <value>Precio</value>
   </data>
   <data name="Quantity" xml:space="preserve">
-    <value>Quantité</value>
+    <value>Cantidad</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Supprimer</value>
+    <value>Eliminar</value>
   </data>
   <data name="Subtotal" xml:space="preserve">
-    <value>Sous-total</value>
+    <value>Subtotal</value>
   </data>
   <data name="Total" xml:space="preserve">
     <value>Total</value>
-    <comment>Total</comment>
   </data>
   <data name="YourCart" xml:space="preserve">
-    <value>Votre panier</value>
+    <value>Su carrito</value>
   </data>
   <data name="Average" xml:space="preserve">
-    <value>Moyenne</value>
+    <value>media</value>
   </data>
 </root>

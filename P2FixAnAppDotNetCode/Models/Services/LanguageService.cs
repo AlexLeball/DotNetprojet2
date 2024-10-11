@@ -24,17 +24,17 @@ namespace P2FixAnAppDotNetCode.Models.Services
         {
             string culture = "";
             // Default to English if the input is null or empty
-            language = language.ToLower();
+            language = language?.ToLower();
             if (string.IsNullOrEmpty(language))
             {
-                return "en"; 
+                return "en";
             }
 
-            if (language == "french")
+            if (language == "french" || language == "français")
             {
                 culture = "fr";
             }
-            else if (language == "spanish")
+            else if (language == "spanish" || language == "espagnol")
             {
                 culture = "es";
             }

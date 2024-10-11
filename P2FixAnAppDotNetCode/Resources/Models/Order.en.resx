@@ -117,35 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Checkout" xml:space="preserve">
-    <value>Passer la commande</value>
+  <data name="ErrorMissingAddress" xml:space="preserve">
+    <value>Please enter an address</value>
   </data>
-  <data name="ContinueShopping" xml:space="preserve">
-    <value>Continuer les achats</value>
+  <data name="ErrorMissingCountry" xml:space="preserve">
+    <value>Please enter a country name</value>
   </data>
-  <data name="Item" xml:space="preserve">
-    <value>Produit</value>
+  <data name="ErrorMissingName" xml:space="preserve">
+    <value>Please enter a name</value>
   </data>
-  <data name="Price" xml:space="preserve">
-    <value>Prix</value>
-  </data>
-  <data name="Quantity" xml:space="preserve">
-    <value>Quantité</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Supprimer</value>
-  </data>
-  <data name="Subtotal" xml:space="preserve">
-    <value>Sous-total</value>
-  </data>
-  <data name="Total" xml:space="preserve">
-    <value>Total</value>
-    <comment>Total</comment>
-  </data>
-  <data name="YourCart" xml:space="preserve">
-    <value>Votre panier</value>
-  </data>
-  <data name="Average" xml:space="preserve">
-    <value>Moyenne</value>
+  <data name="ErrorMissingCity" xml:space="preserve">
+    <value>Please enter a city name</value>
   </data>
 </root>

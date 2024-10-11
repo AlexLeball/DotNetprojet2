@@ -120,13 +120,13 @@
   <data name="ErrorMissingAddress" xml:space="preserve">
     <value>Veuillez renseigner une adresse</value>
   </data>
-  <data name="ErrorMissingCity" xml:space="preserve">
-    <value>Veuillez renseigner le nom d'une ville</value>
-  </data>
   <data name="ErrorMissingCountry" xml:space="preserve">
     <value>Veuillez renseigner le nom d'un pays</value>
   </data>
   <data name="ErrorMissingName" xml:space="preserve">
     <value>Veuillez renseigner un nom</value>
+  </data>
+  <data name="ErrorMissingCity" xml:space="preserve">
+    <value>Veuillez renseigner une ville</value>
   </data>
 </root>
