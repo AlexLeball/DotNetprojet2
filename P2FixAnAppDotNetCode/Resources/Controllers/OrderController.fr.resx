@@ -117,7 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Empty order" xml:space="preserve">
+  <data name="CartEmpty" xml:space="preserve">
     <value>votre panier est vide</value>
+  </data>
+  <data name="ErrorMissingAddress" xml:space="preserve">
+    <value>Veuillez entrer une adresse</value>
+  </data>
+  <data name="ErrorMissingCity" xml:space="preserve">
+    <value>Veuillez entrer une ville</value>
+  </data>
+  <data name="ErrorMissingCountry" xml:space="preserve">
+    <value>Veuillez entrer un pays</value>
+  </data>
+  <data name="ErrorMissingName" xml:space="preserve">
+    <value>Veuillez entrer un nom</value>
   </data>
 </root>

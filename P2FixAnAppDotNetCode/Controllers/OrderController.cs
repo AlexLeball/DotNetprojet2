@@ -25,9 +25,25 @@ namespace P2FixAnAppDotNetCode.Controllers
         [HttpPost]
         public IActionResult Index(Order order)
         {
-            if (!((Cart) _cart).Lines.Any())
+            if (!((Cart)_cart).Lines.Any())
             {
                 ModelState.AddModelError(string.Empty, _localizer["CartEmpty"]);
+            }
+            if (string.IsNullOrWhiteSpace(order.Name))
+            {
+                ModelState.AddModelError(nameof(order.Name), _localizer["ErrorMissingName"]);
+            }
+            if (string.IsNullOrWhiteSpace(order.Address))
+            {
+                ModelState.AddModelError(nameof(order.Address), _localizer["ErrorMissingAddress"]);
+            }
+            if (string.IsNullOrWhiteSpace(order.City))
+            {
+                ModelState.AddModelError(nameof(order.City), _localizer["ErrorMissingCity"]);
+            }
+            if (string.IsNullOrWhiteSpace(order.Country))
+            {
+                ModelState.AddModelError(nameof(order.Country), _localizer["ErrorMissingCountry"]);
             }
 
             if (ModelState.IsValid)
@@ -36,7 +52,7 @@ namespace P2FixAnAppDotNetCode.Controllers
                 _orderService.SaveOrder(order);
                 return RedirectToAction(nameof(Completed));
             }
-           
+
             return View(order);
         }
 

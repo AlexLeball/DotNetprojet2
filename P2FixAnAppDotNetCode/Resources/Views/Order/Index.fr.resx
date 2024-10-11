@@ -135,9 +135,6 @@
   <data name="Location" xml:space="preserve">
     <value>Localisation</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>Nom</value>
-  </data>
   <data name="OrderTitle" xml:space="preserve">
     <value>Veuillez remplir le formulaire</value>
   </data>
@@ -149,5 +146,8 @@
   </data>
   <data name="Zip" xml:space="preserve">
     <value>Code postal</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
   </data>
 </root>

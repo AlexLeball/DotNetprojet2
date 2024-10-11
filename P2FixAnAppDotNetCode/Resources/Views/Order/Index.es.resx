@@ -135,9 +135,6 @@
   <data name="Location" xml:space="preserve">
     <value>ubicación</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>nombre</value>
-  </data>
   <data name="OrderTitle" xml:space="preserve">
     <value>por favor, complete la compra</value>
   </data>
@@ -149,5 +146,8 @@
   </data>
   <data name="Zip" xml:space="preserve">
     <value>código postal</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
   </data>
 </root>
