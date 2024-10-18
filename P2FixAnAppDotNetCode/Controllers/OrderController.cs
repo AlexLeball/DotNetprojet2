@@ -31,7 +31,7 @@ namespace P2FixAnAppDotNetCode.Controllers
                 ModelState.AddModelError(string.Empty, _localizer["CartEmpty"]);
             }
 
-            // If the model state is valid (meaning all required fields are filled correctly)
+            // If the model state is valid (all required fields are filled correctly)
             if (ModelState.IsValid)
             {
                 // Assign lines from the cart to the order and save
