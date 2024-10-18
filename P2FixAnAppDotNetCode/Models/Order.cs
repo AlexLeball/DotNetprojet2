@@ -18,11 +18,15 @@ namespace P2FixAnAppDotNetCode.Models
         {
             _resourceKey = resourceKey;
         }
+        // Override the IsValid method to check for required fields
+        //this is to check if the value is null or empty
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            // Get the localizer service from the validation context
             var localizer = (IStringLocalizer<OrderController>)validationContext.GetService(typeof(IStringLocalizer<OrderController>));
-            Console.WriteLine(localizer["ErrorMissingName"]); // Check if this logs the expected value
+            // Check if this logs the expected value
+            Console.WriteLine(localizer["ErrorMissingName"]); 
 
             if (localizer == null)
             {
@@ -48,7 +52,7 @@ namespace P2FixAnAppDotNetCode.Models
         [BindNever]
         public ICollection<CartLine> Lines { get; set; }
 
-        // Using the custom RequiredLocalized attribute
+        // Using the custom RequiredLocalized attribute for all required fields
         [RequiredLocalized("ErrorMissingName")]
         public string Name { get; set; }
 

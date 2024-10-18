@@ -16,6 +16,7 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
 
         private List<Product> GenerateProductData()
         {
+            // Initialize the in-memory product list
             int id = 0;
             return new List<Product>
             {
@@ -27,18 +28,22 @@ namespace P2FixAnAppDotNetCode.Models.Repositories
             };
         }
 
+        // Get all products in the repository
         public List<Product> GetAllProducts()
         {
             return _products.Where(p => p.Stock > 0).OrderBy(p => p.Name).ToList();
         }
 
+        // Get a product by its id from the repository (or return null if not found)
         public Product GetProductById(int id)
         {
             return _products.FirstOrDefault(p => p.Id == id);
         }
 
+        // Update a product in the repository (or throw an exception if not found) 
         public void UpdateProduct(Product product)
         {
+            // Find the product by id
             var existingProduct = GetProductById(product.Id);
             if (existingProduct != null)
             {

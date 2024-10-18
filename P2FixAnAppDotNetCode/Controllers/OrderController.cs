@@ -20,7 +20,10 @@ namespace P2FixAnAppDotNetCode.Controllers
             _localizer = localizer ?? throw new InvalidOperationException("Localization service not initialized.");
         }
 
+        // Create a new order object and return the view
         public ViewResult Index() => View(new Order());
+
+        // Post method for the order form submission
 
         [HttpPost]
         public IActionResult Index(Order order)
@@ -44,6 +47,7 @@ namespace P2FixAnAppDotNetCode.Controllers
             return View(order);
         }
 
+        // Method to display the order completion view
         public ViewResult Completed()
         {
             _cart.Clear(); // Clear the cart after order completion

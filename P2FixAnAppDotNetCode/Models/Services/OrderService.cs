@@ -27,6 +27,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
             order.Date = DateTime.Now;
             _repository.Save(order);
             UpdateInventory();
+
         }
 
         /// <summary>
@@ -36,6 +37,7 @@ namespace P2FixAnAppDotNetCode.Models.Services
         {
             _productService.UpdateProductQuantities(_cart as Cart);
             _cart.Clear();
+
         }
     }
 }
