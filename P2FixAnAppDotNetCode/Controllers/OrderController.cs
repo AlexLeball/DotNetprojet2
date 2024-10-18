@@ -17,7 +17,7 @@ namespace P2FixAnAppDotNetCode.Controllers
         {
             _cart = pCart;
             _orderService = service;
-            _localizer = localizer;
+            _localizer = localizer ?? throw new InvalidOperationException("Localization service not initialized.");
         }
 
         public ViewResult Index() => View(new Order());
@@ -25,40 +25,28 @@ namespace P2FixAnAppDotNetCode.Controllers
         [HttpPost]
         public IActionResult Index(Order order)
         {
+            // Check if the cart is empty
             if (!((Cart)_cart).Lines.Any())
             {
                 ModelState.AddModelError(string.Empty, _localizer["CartEmpty"]);
             }
-            if (string.IsNullOrWhiteSpace(order.Name))
-            {
-                ModelState.AddModelError(nameof(order.Name), _localizer["ErrorMissingName"]);
-            }
-            if (string.IsNullOrWhiteSpace(order.Address))
-            {
-                ModelState.AddModelError(nameof(order.Address), _localizer["ErrorMissingAddress"]);
-            }
-            if (string.IsNullOrWhiteSpace(order.City))
-            {
-                ModelState.AddModelError(nameof(order.City), _localizer["ErrorMissingCity"]);
-            }
-            if (string.IsNullOrWhiteSpace(order.Country))
-            {
-                ModelState.AddModelError(nameof(order.Country), _localizer["ErrorMissingCountry"]);
-            }
 
+            // If the model state is valid (meaning all required fields are filled correctly)
             if (ModelState.IsValid)
             {
+                // Assign lines from the cart to the order and save
                 order.Lines = (_cart as Cart)?.Lines.ToArray();
                 _orderService.SaveOrder(order);
                 return RedirectToAction(nameof(Completed));
             }
 
+            // Return the view with the order object if validation fails
             return View(order);
         }
 
         public ViewResult Completed()
         {
-            _cart.Clear();
+            _cart.Clear(); // Clear the cart after order completion
             return View();
         }
     }

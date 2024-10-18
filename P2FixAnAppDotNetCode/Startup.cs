@@ -22,10 +22,11 @@ namespace P2FixAnAppDotNetCode
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLocalization(opts => { opts.ResourcesPath = "Resources"; });
+
+            // Register services
             services.AddSingleton<ICart, Cart>();
             services.AddSingleton<ILanguageService, LanguageService>();
             services.AddSingleton<IProductService, ProductService>();
@@ -34,34 +35,31 @@ namespace P2FixAnAppDotNetCode
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddMemoryCache();
             services.AddSession();
+
             services.AddMvc()
-                .AddViewLocalization(
-                    LanguageViewLocationExpanderFormat.Suffix,
-                    opts => { opts.ResourcesPath = "Resources"; })
-                .AddDataAnnotationsLocalization();
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization(); // localised attributes 
 
             services.Configure<RequestLocalizationOptions>(opts =>
-            { 
+            {
                 var supportedCultures = new List<CultureInfo>
-                {
-                    new CultureInfo("en-GB"),
-                    new CultureInfo("en-US"),
-                    new CultureInfo("en"),
-                    new CultureInfo("fr-FR"),
-                    new CultureInfo("fr"),
-                    new CultureInfo("es-ES"),
-                    new CultureInfo("es")
-                };
-
+                //add required cultures
+        {
+            new CultureInfo("en-GB"),
+            new CultureInfo("en-US"),
+            new CultureInfo("en"),
+            new CultureInfo("fr-FR"),
+            new CultureInfo("fr"),
+            new CultureInfo("es-ES"),
+            new CultureInfo("es")
+        };
+                //set default to english
                 opts.DefaultRequestCulture = new RequestCulture("en");
-                // Formatting numbers, dates, etc.
                 opts.SupportedCultures = supportedCultures;
-                // UI strings that we have localized.
                 opts.SupportedUICultures = supportedCultures;
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseStaticFiles();
