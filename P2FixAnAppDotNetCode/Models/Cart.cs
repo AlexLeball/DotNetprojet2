@@ -21,6 +21,11 @@ namespace P2FixAnAppDotNetCode.Models
         {
             _productService = productService;
         }
+        // Empty constructor for tests
+        public Cart()
+        {
+            _productService = null;
+        }
 
         /// Adds a product to the cart or increments its quantity if already added.
         public void AddItem(Product product, int quantity)

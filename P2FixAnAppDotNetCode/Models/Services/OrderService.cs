@@ -35,7 +35,6 @@ namespace P2FixAnAppDotNetCode.Models.Services
         /// </summary>
         private void UpdateInventory()
         {
-            _productService.UpdateProductQuantities(_cart as Cart);
             _cart.Clear();
 
         }
