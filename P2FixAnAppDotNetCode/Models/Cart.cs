@@ -83,8 +83,27 @@ namespace P2FixAnAppDotNetCode.Models
         /// Removes a product from the cart by accessing it through the productId.
         public void RemoveLine(Product product)
         {
-            Console.WriteLine($"Removing Product ID: {product.Id} from the cart.");
-            cartLines.RemoveAll(i => i.Product.Id == product.Id);
+            //access first instance in cartlines where product id matches
+            var cartLine = cartLines.FirstOrDefault(i => i.Product.Id == product.Id);
+            if (cartLine != null)
+            {
+                if (cartLine.Quantity > 1)
+                {
+                    cartLine.Quantity -= 1; // Decrease quantity by 1 
+                }
+                else
+                {
+                    // If quantity is 1, remove the product cartline from the cart
+                    cartLines.Remove(cartLine);
+                }
+                // update stock
+                _productService.UpdateProductStocks(product.Id, -1);
+            }
+            else
+            {
+                // Log a message if the product is not found in the cart
+                Console.WriteLine($"Product ID: {product.Id} not found in the cart. No action taken.");
+            }
         }
 
         /// Gets the total value of the cart by summing the price of all products in the cart.

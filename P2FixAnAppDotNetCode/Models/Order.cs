@@ -13,7 +13,7 @@ namespace P2FixAnAppDotNetCode.Models
     {
         private readonly string _resourceKey;
 
-        // Constructor with parameters for localization
+        // Constructor with parameters for localization. Adds logic to field validation
         public RequiredLocalizedAttribute(string resourceKey)
         {
             _resourceKey = resourceKey;
@@ -23,8 +23,9 @@ namespace P2FixAnAppDotNetCode.Models
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            // Get the localizer service from the validation context
+            // Get the localizer service from the validation context (order controller ligne 37)
             var localizer = (IStringLocalizer<OrderController>)validationContext.GetService(typeof(IStringLocalizer<OrderController>));
+
             // Check if this logs the expected value
             Console.WriteLine(localizer["ErrorMissingName"]); 
 
