@@ -65,7 +65,7 @@ namespace P2FixAnAppDotNetCode.Models
                 _productService.UpdateProductStocks(product.Id, quantity);
             }
         }
-
+        //commit to see if update
 
         /// Finds a product in the cart accessed by id and returns it.    
         public Product FindProductInCartLines(int productId)
